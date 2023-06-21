@@ -9,7 +9,7 @@ void f_add(stack_t **head, unsigned int counter)
 {
 	stack_t *p;
 	int len = 0, aux;
-
+	bus_t bus;
 	p = *head;
 	while (p)
 	{
