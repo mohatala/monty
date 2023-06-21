@@ -29,11 +29,9 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 				};
 	unsigned int j = 0;
 	char *opr;
-	bus_t bus;
 	opr = strtok(content, " \n\t");
 	if (opr && opr[0] == '#')
 		return (0);
-	bus.arg = strtok(NULL, " \n\t");
 	while (opst[j].opcode && opr)
 	{
 		if (strcmp(opr, opst[j].opcode) == 0)
