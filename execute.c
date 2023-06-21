@@ -29,7 +29,7 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 				};
 	unsigned int j = 0;
 	char *opr;
-
+	bus_t bus;
 	opr = strtok(content, " \n\t");
 	if (opr && opr[0] == '#')
 		return (0);
