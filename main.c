@@ -42,9 +42,9 @@ if (!strcmp(opcode, "nop"))
 continue;
 else if (!strcmp(opcode, "push")) {
 n = strtok(NULL, DELIMITER);
-push(&stack, n, count);
+f_push(&stack, n, count);
 } else {
-find_opcode(&stack, opcode, count);
+f_opcode(&stack, opcode, count);
 }
 }
 
