@@ -44,6 +44,6 @@ void f_pop(stack_t **head, unsigned int counter);
 void f_swap(stack_t **head, unsigned int counter);
 void f_nop(stack_t **head, unsigned int counter);
 void f_stack(stack_t **head, unsigned int counter);
-int f_opcode(stack_t **stack, char *opcode, int counter)
+int f_opcode(stack_t **head, char *opcode, int counter)
 
 #endif
