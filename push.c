@@ -2,36 +2,43 @@
 /**
  * f_push - add node to the stack
  * @head: stack head
+ * @n: n
  * @counter: line_number
  * Return: no return
 */
-void f_push(stack_t **head, unsigned int counter)
+void f_push(stack_t **head, char *n, unsigned int counter)
 {
-	int n, i = 0, fg = 0;
-	bus_t bus;
-	if (bus.arg)
+	stack_t *new = NULL;
+	int i;
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
 	{
-		if (bus.arg[0] == '-')
-			i++;
-		for (; bus.arg[i] != '\0'; i++)
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	if (n == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", counter);
+		exit(EXIT_FAILURE);
+	}
+	for (i = 0; n[i]; i++)
+	{
+		if (n[0] == '-' && i == 0)
+			continue;
+		if (n[i] < 48 || n[i] > 57)
 		{
-			if (bus.arg[i] > 57 || bus.arg[i] < 48)
-				fg = 1; }
-		if (fg == 1)
-		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
-			fclose(bus.file);
-			free(bus.content);
-			free_stack(*head);
-			exit(EXIT_FAILURE); }}
-	else
-	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE); }
-	n = atoi(bus.arg);
-	if (bus.lifi == 0)
-		addnode(head, n);
-	else
-		addqueue(head, n);
+			fprintf(stderr, "L%d: usage: push integer\n", counter);
+			exit(EXIT_FAILURE);
+		}
+	}
+	new->n = atoi(n);
+	new->prev = NULL;
+	new->next = NULL;
+	if (*head != NULL)
+	{
+		new->next = *head;
+		(*head)->prev = new;
+	}
+	*head = new;
 }
